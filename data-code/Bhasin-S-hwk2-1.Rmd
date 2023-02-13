@@ -1,0 +1,80 @@
+---
+title: "Bhasin-S-hw2-1"
+author: "Sachi Bhasin"
+date: "2023-02-12"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_chunk$set(echo = TRUE)
+load("Hw2_workspace.Rdata")
+library(lemon)
+knit_print.data.frame <- lemon_print
+library(tidyverse)
+library(readr)
+library(imputeTS)
+knitr::opts_chunk$set(echo = FALSE, message=FALSE, warning = FALSE, fig.width = 16/2, fig.height = 9/2, tidy.opts=list(width.cutoff=60), tidy=TRUE)
+```
+
+## R Markdown
+
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+
+Question #1 
+```{r cars}
+graph_2
+```
+
+Question #2 
+
+
+There are `r  unique_provider_numbers` unique hospital IDs in the data.
+
+Question #3
+
+```{r pressure, echo=FALSE}
+graph_3
+```
+
+Question #4 
+```{r}
+graph_4
+```
+
+Question #5
+```{r}
+table_5
+```
+
+Question #6
+```{r}
+table_6
+```
+7 
+
+I am not sure how to do this as I kept getting an error. Given our discussion in class, I would assume first we have to stimulate our data. Then, we have to use the MatchIt package and the "Matching::Match" function. 
+To differentiate between the inverse variance distance and Mahalanobis distance, weight would be set to 1 for the inverse variane distance and 2 for the Mahalanobis distance. 
+For the inverse propensity weighting, we would have to code for a logistic regression model using model <- glm(D~X, family=binomial, year_2012). 
+To make the simple linear regression, we would use the following code 
+reg1.dat <- year_2012 %>% filter(d==1)
+reg1 <- lm(y ~ x, data=reg1.dat)
+
+regression_2012 <- year_2012 %>% filter(d==0)
+reg0 <- lm(y ~ x, data=regression_2012)
+pred1 <- predict(reg1,new=year_2012$beds)
+pred0 <- predict(reg0,new=year_2012$quartile)
+mean(pred1-pred0)
+
+8 
+Since I was unable to run the code for #7,I was not able to get results for the previous question. I would guess that the estimators are similar. 
+
+9 
+I think I have estimated a casual effect of the penalty through matching,weighting, and running linear regression. These methods allowed us to control potential confounding variables in the study, suggesting a causal effect. 
+
+10
+
+I found working with this data challenging. I learned how to create a dummy variable and quartiles the data set. I was aggravated when trying to run the code to find the average treatment. 
+

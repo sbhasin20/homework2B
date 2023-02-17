@@ -86,6 +86,7 @@ inv_var <- Matching::Match(Y=year_2012$price,
                            estimand="ATE")
 summary(inv_var)
 
+
 #b
 Maha <- Matching::Match(Y=year_2012$price,
                            Tr=year_2012$penalty,

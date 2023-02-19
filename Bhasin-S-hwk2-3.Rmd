@@ -1,0 +1,135 @@
+---
+title: "Bhasin-S-hwk2-3"
+author: "Sachi Bhasin"
+date: ""
+header-includes:
+  - \usepackage{booktabs}
+output: 
+  bookdown::pdf_document2:
+    fig_caption: yes
+    toc: false
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, warning = FALSE, message = FALSE)
+if (!require("pacman")) install.packages("pacman")
+pacman::p_load(tidyverse, ggplot2, dplyr, lubridate, stringr, readxl, data.table, gdata, scales,
+               kableExtra)
+
+load("Hwk2_workspace.Rdata")
+```
+
+\newpage
+
+\vspace{.2in}
+\noindent Question 1 
+
+2,329 hospitals filed more than one report in the same year. 
+
+```{r}
+graph_2
+```
+
+\newpage
+
+\vspace{.2in}
+\noindent Question 2 
+
+After removing/combining multiple reports, there are 9,323 unique hospital IDs in the data. 
+
+```{r}
+unique_provider_numbers
+```
+
+\newpage
+
+\vspace{.2in}
+\noindent Question 3
+
+```{r}
+graph_3
+```
+
+\newpage
+
+\vspace{.2in}
+\noindent Question 4
+
+This graph made me realize we had to filter our data since some of the prices were negative and some of tthe values were extreme. 
+
+\vspace{.2in}
+
+```{r}
+graph_4
+```
+
+
+\newpage
+
+\vspace{.2in}
+\noindent Question 5
+
+Before calculating the average price among penalized versus non-penalized hospitals, prices were filtered to be positive and below 100,000 to get rid of outliers. 
+
+```{r}
+table_5
+```
+
+\newpage
+
+\vspace{.2in}
+\noindent Question 6
+
+```{r}
+table_6
+```
+
+\newpage
+
+\vspace{.2in}
+\noindent Question 7
+
+```{r table,  echo=F, eval=TRUE}
+print(table)
+```
+
+
+\newpage
+
+\vspace{.2in}
+\noindent Question 8
+
+With these differnt treatment effect estimators, the results are identical. 
+
+\vspace{.2in}
+\noindent Question 9
+
+I think we have estimated a causal effect of the penalty by matching with inverse variance distance and Mahalanobis distance as well as inverse propensity weighting. Also, running the simple linear regression was another method for eliminating potential confounding variables, suggesting a causal effect.  
+
+\vspace{.2in}
+\noindent Question 10
+
+I found working with this data challenging but easier than homework 1 as I am getting more comfortable trouble shooting and working with this application. I learned how to create a dummy variable and quartiles for a data set. It was very aggravating to troubleshoot the error I kept getting with the propensity score and number 7 in general. 
+                                                      
+
+
+\
+## R Markdown
+
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+
+```{r cars}
+
+```
+
+## Including Plots
+
+You can also embed plots, for example:
+
+```{r pressure, echo=FALSE}
+
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
